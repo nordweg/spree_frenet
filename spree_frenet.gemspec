@@ -8,13 +8,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_frenet'
   s.version     = SpreeFrenet.version
-  s.summary     = 'Add extension summary here'
-  s.description = 'Add (optional) extension description here'
+  s.summary     = 'Shipping quotes using Frenet'
+  s.description = 'Spree extension with custom calculators to quote shipments via Frenet'
   s.required_ruby_version = '>= 2.2.7'
 
-  s.author    = 'You'
-  s.email     = 'you@example.com'
-  s.homepage  = 'https://github.com/your-github-handle/spree_frenet'
+  s.author    = 'Lucas Kuhn'
+  s.email     = 'lucas@nordweg.com'
+  s.homepage  = 'https://github.com/nordweg/spree_frenet'
   s.license = 'BSD-3-Clause'
 
   # s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
