@@ -3,14 +3,13 @@ class Frenet::Request
 
   def get(path, body={})
     response = request.get(path, body)
-    log_error(response) unless response.success?
+    raise_error(response) unless response.success?
     response.body
   end
 
   def post(path, body={})
     response = request.post(path, body)
-    byebug
-    log_error(response) unless response.success?
+    raise_error(response) unless response.success?
     response.body
   end
 
@@ -25,9 +24,10 @@ class Frenet::Request
     end
   end
 
-  def log_error(response)
+  def raise_error(response)
     puts "SPREE_FRENET: Request returned the following error"
     puts "Status: #{response.status}\nBody: #{response.body}"
+    raise "Status: #{response.status}\nBody: #{response.body}"
   end
 
 end

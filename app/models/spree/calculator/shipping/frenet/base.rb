@@ -5,7 +5,7 @@ module Spree::Calculator::Shipping::Frenet
 
     def compute(object = nil)
       # Low level cache to avoid multiple calls since frenet returns all options in the first call
-      shipping_quotes = Rails.cache.fetch("#{package.order.number}/frenet_quotes", expires_in: 10.seconds) do
+      shipping_quotes = Rails.cache.fetch("#{object.order.number}/frenet_quotes", expires_in: 10.seconds) do
         ::Frenet::Api.get_shipping_quote(object)
       end
       get_rate_for_shipping_method(shipping_quotes)
