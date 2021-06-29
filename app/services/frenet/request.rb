@@ -1,32 +1,17 @@
 class Frenet::Request
   def initialize; end
 
-  def post(path, body={})
-    begin
-      response = request.post(path, body)
-      response.body
-    rescue Exception => e
-      p "FRENET: Request return the following error:"
-      p e.message
-      {
-        status: "Error",
-        message: e.message
-      }
-    end
+  def get(path, body={})
+    response = request.get(path, body)
+    log_error(response) unless response.success?
+    response.body
   end
 
-  def get(path, body={})
-    begin
-      response = request.get(path, body)
-      response.body
-    rescue Exception => e
-      p "FRENET: Request return the following error:"
-      p e.message
-      {
-        status: "Error",
-        message: e.message
-      }
-    end
+  def post(path, body={})
+    response = request.post(path, body)
+    byebug
+    log_error(response) unless response.success?
+    response.body
   end
 
   private
@@ -36,8 +21,13 @@ class Frenet::Request
       conn.request :json
       conn.response :json
       conn.adapter :net_http
-      conn.headers[:token] = Rails.application.secrets.frenet_token
+      conn.headers[:token] = ENV["FRENET_TOKEN"] ||  Rails.application.secrets.frenet_token
     end
+  end
+
+  def log_error(response)
+    puts "SPREE_FRENET: Request returned the following error"
+    puts "Status: #{response.status}\nBody: #{response.body}"
   end
 
 end

@@ -1,12 +1,12 @@
 # SpreeFrenet
 
-Introduction goes here.
+Spree extension with custom calculators to quote shipments via Frenet
 
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
   ```ruby
-  gem 'spree_frenet', github: '[your-github-handle]/spree_frenet'
+  gem 'spree_frenet'
   ```
 
 2. Install the gem using Bundler:
