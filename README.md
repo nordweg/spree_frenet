@@ -14,10 +14,15 @@ Spree extension with custom calculators to quote shipments via Frenet
   bundle install
   ```
 
-3. Copy & run migrations
+3. Add your Frenet token as an ENV variable
+  ```sh
+  export FRENET_TOKEN="your-token"
+  ```
+
+<!-- 3. Copy & run migrations
   ```ruby
   bundle exec rails g spree_frenet:install
-  ```
+  ``` -->
 
 4. Restart your server
 
